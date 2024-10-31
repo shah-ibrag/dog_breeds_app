@@ -1,2 +1,9 @@
-<h1>Breeds#index</h1>
-<p>Find me in app/views/breeds/index.html.erb</p>
+<h1>All Dog Breeds</h1>
+<div class="list-group">
+  <% @breeds.each do |breed| %>
+    <a href="<%= breed_path(breed) %>" class="list-group-item list-group-item-action">
+      <%= image_tag breed.image_url, class: "img-thumbnail", alt: "#{breed.name} image" %>
+      <%= breed.name %>
+    </a>
+  <% end %>
+</div>
