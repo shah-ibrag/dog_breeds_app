@@ -1,2 +1,10 @@
-<h1>Breeds#show</h1>
-<p>Find me in app/views/breeds/show.html.erb</p>
+<h1><%= @breed.name %></h1>
+<p><img src="<%= @breed.image_url %>" class="img-fluid" alt="<%= @breed.name %>"></p>
+<h2>Sub-breeds</h2>
+<ul>
+  <% @breed.sub_breeds.each do |sub_breed| %>
+    <li>
+      <%= link_to sub_breed.name, breed_sub_breed_path(@breed, sub_breed) %>
+    </li>
+  <% end %>
+</ul>
