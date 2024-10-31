@@ -24,12 +24,15 @@
 
           <!-- Search Form -->
           <%= form_with url: breeds_path, method: :get, local: true, class: "d-flex" do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search breeds...", class: "form-control me-2" %>
+            <%= select_tag :search_type, options_for_select([['Breeds', 'breeds'], ['Sub-Breeds', 'sub_breeds']], params[:search_type]), class: "form-select me-2" %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control me-2" %>
             <%= submit_tag "Search", class: "btn btn-outline-primary" %>
           <% end %>
         </div>
       </div>
     </nav>
+
+
     <% if flash[:alert] %>
     <div class="alert alert-danger text-center" role="alert">
       <%= flash[:alert] %>
