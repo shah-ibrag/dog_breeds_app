@@ -5,7 +5,7 @@
       <div class="col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
         <div class="card h-100">
           <%= link_to breed_path(breed) do %>
-            <img src="<%= breed.image_url %>" class="card-img-top" alt="<%= breed.name %> image" style="height: 200px; object-fit: cover;">
+            <img src="<%= breed.image_url %>" class="card-img-top" alt="<%= breed.name %> image" style="height: 150px; width: 100%; object-fit: cover;">
           <% end %>
           <div class="card-body text-center">
             <h5 class="card-title"><%= link_to breed.name, breed_path(breed) %></h5>

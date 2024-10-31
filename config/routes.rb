@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "sub_breeds/show"
   # Sets the breeds index as the homepage and defines the breeds resources
   root 'breeds#index'  
   resources :breeds, only: [:index, :show]  # Include :index to define breeds_path

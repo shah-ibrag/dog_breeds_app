@@ -1,10 +1,23 @@
-<h1><%= @breed.name %></h1>
-<p><img src="<%= @breed.image_url %>" class="img-fluid" alt="<%= @breed.name %>"></p>
-<h2>Sub-breeds</h2>
-<ul>
-  <% @breed.sub_breeds.each do |sub_breed| %>
-    <li>
-      <%= link_to sub_breed.name, breed_sub_breed_path(@breed, sub_breed) %>
-    </li>
-  <% end %>
-</ul>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">
+          <h1 class="display-5"><%= @breed.name.capitalize %></h1>
+        </div>
+        <div class="card-body">
+          <img src="<%= @breed.image_url %>" class="img-fluid rounded mb-3" alt="<%= @breed.name %>" style="height: 250px; width: auto; object-fit: cover;">
+          <h4 class="card-title mt-3">Sub-breeds</h4>
+          <ul class="list-unstyled">
+            <% @breed.sub_breeds.each do |sub_breed| %>
+              <li><%= link_to sub_breed.name.capitalize, breed_sub_breed_path(@breed, sub_breed), class: "text-primary" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="card-footer text-muted">
+          <%= link_to 'Back to Breeds', breeds_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
