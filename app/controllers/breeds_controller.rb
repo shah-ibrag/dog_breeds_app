@@ -1,7 +1,7 @@
 class BreedsController < ApplicationController
   # GET /breeds
   def index
-    @breeds = Breed.all
+    @breeds = Breed.page(params[:page]).per(9) # breeds per page
   end
 
   # GET /breeds/:id
