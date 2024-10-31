@@ -21,10 +21,21 @@
               <%= link_to 'About Me', pages_about_path, class: 'nav-link' %>
             </li>
           </ul>
+
+          <!-- Search Form -->
+          <%= form_with url: breeds_path, method: :get, local: true, class: "d-flex" do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search breeds...", class: "form-control me-2" %>
+            <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+          <% end %>
         </div>
       </div>
     </nav>
-
+    <% if flash[:alert] %>
+    <div class="alert alert-danger text-center" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
   </header>
   <div class="container mt-4">
     <%= yield %>

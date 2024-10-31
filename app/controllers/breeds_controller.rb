@@ -1,11 +1,19 @@
 class BreedsController < ApplicationController
-  # GET /breeds
   def index
-    @breeds = Breed.page(params[:page]).per(9) # breeds per page
+    if params[:search].present?
+      @breeds = Breed.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%").page(params[:page]).per(9)
+    else
+      @breeds = Breed.page(params[:page]).per(9)
+    end
   end
 
-  # GET /breeds/:id
   def show
-    @breed = Breed.find(params[:id])
+    @breed = Breed.find_by(id: params[:id])
+    
+    # Redirect if breed is not found
+    if @breed.nil?
+      flash[:alert] = "Breed not found."
+      redirect_to breeds_path
+    end
   end
 end
