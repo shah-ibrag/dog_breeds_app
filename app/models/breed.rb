@@ -1,2 +1,4 @@
 class Breed < ApplicationRecord
-end
+    has_many :sub_breeds, dependent: :destroy
+  end
+  

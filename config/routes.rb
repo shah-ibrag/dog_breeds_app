@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'breeds#index'  # Sets the breeds index as the homepage
+  resources :breeds, only: [:show] do
+    resources :sub_breeds, only: [:show]
+  end
 end
